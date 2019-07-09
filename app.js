@@ -4,29 +4,34 @@ const express = require('express');
 //Create a Express application
 const app = express();
 
+app.use('/static', express.static('public'));
+
+//Set Pug to template engine
+app.set('view engine', 'pug');
+
 //Set routes
 app.get('/', (req, res) => {
-    res.send('home page');
+    res.redirect('/books');
 });
 
 app.get('/books', (req, res) => {
-    res.send('shows book list');
+    res.render('index');
 });
 
 app.get('/books/new', (req, res) => {
-    res.send('shows a new book form');
+    res.render('new-book');
 });
 
 app.post('/books/new', (req, res) => {
-    res.send('posts a new book');
+    res.render('new-book');
 });
 
 app.get('/books/:id', (req, res) => {
-    res.send('shows book detail page');
+    res.render('new-book');
 });
 
 app.post('/books/:id', (req, res) => {
-    res.send('updates a book detail');
+    res.render('new-book');
 });
 
 app.post('/books/:id/delete', (req, res) => {
