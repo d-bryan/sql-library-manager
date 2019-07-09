@@ -1,0 +1,18 @@
+{
+  "name": "techdegree-p8-sql_library_manager",
+  "version": "1.0.0",
+  "description": "library book manager with sqlite",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jasper Kim",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pug": "^2.0.4",
+    "sequelize": "^5.9.4",
+    "sequelize-cli": "^5.5.0",
+    "sqlite3": "^4.0.9"
+  }
+}
