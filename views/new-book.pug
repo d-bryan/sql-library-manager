@@ -1,8 +1,10 @@
 extends layout.pug
 
 block content
+    if success
+        p= success
     h1 New Book
-    form
+    form(action='/books/new', method='post')
         p
             label(for='title') Title
             input#title(name='title', type='text')
@@ -18,5 +20,5 @@ block content
         p
             input(type='submit', value='Create New Book')
         p
-            a.button(href='all_books.html') Cancel
+            a.button(href='/books') Cancel
 
