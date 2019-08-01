@@ -7,7 +7,7 @@ block content
     - const author = book.author;
     - const genre = book.genre;
     - const year = book.year;
-    form
+    form(method='post', action="/books/" + id)
         p
             label(for='title') Title
             input#title(name='title', type='text', value= title)

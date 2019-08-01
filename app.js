@@ -17,7 +17,20 @@ app.set('view engine', 'pug');
 //Set books routes
 app.use('/books', require('./routes/books'));
 
-//Set routes
+//Set up a middleware function to handle 404 error
+app.use((req, res, next) => {
+        if(!req.route){
+            res.status(404).render('page-not-found');
+        }
+    });
+
+//Set up middleware functions for server errors
+app.use(function (err, req, res, next) {
+    console.log('Error: ' + err.message);
+    res.render('error');
+});
+
+//Set Home route
 app.get('/', (req, res) => {
     res.redirect('/books');
 });
