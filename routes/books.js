@@ -1,6 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const Book = require('../models').Book;
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
+
+const sequelize = new Sequelize({
+    dialect: 'sqlite',
+    storage: 'library.db'
+  });
 
 //GET book listing
 router.get('/', (req, res) => {
@@ -18,7 +25,41 @@ router.post('/new', (req, res) => {
     let { title, author, genre, year } = req.body;
 
     Book.create({ title, author, genre, year })
-        .then(()=> res.render('new-book', {success: "The book is successfuly added to the book list!"}));
+        .then(() => res.redirect("/books"))
+        //Catch reqrired form field error
+        .catch((err) => {
+            if(err.name === "SequelizeValidationError"){
+                res.render('new-book', {errors: err.errors});
+            }
+        });
+});
+
+//GET search book
+router.get('/search', (req, res) => {
+    const query = req.query.q.toLowerCase();
+
+    Book.findAll({
+        where: {
+            [Op.or]: [
+                sequelize.where(
+                    sequelize.fn('lower', sequelize.col('title')),
+                    {[Op.like]: '%' + query + '%'},
+                ),
+                sequelize.where(
+                    sequelize.fn('lower', sequelize.col('author')),
+                    {[Op.like]: '%' + query + '%'},
+                ),
+                sequelize.where(
+                    sequelize.fn('lower', sequelize.col('genre')),
+                    {[Op.like]: '%' + query + '%'},
+                ),
+                sequelize.where(
+                    sequelize.fn('lower', sequelize.col('year')),
+                    {[Op.like]: '%' + query + '%'},
+                )
+            ]
+        }
+    }).then(books => res.render('index', { books }));
 });
 
 //GET book detail form
@@ -33,7 +74,14 @@ router.get('/:id', (req, res) => {
 router.post('/:id', (req, res) => {
     Book.findByPk(req.params.id)
         .then((book) => book.update(req.body))
-        .then(book => res.redirect("/books/" + book.id));
+        .then(book => res.redirect("/books/" + book.id))
+        //Catch reqrired form field error
+        .catch((err) => {
+            if(err.name === "SequelizeValidationError"){
+                Book.findByPk(req.params.id)
+                    .then(book => res.render('update-book', { errors: err.errors, book }));
+            }
+        });
 });
 
 //POST delete book

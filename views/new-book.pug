@@ -3,6 +3,11 @@ extends layout.pug
 block content
     if success
         p= success
+    if errors
+        h2.error Oooops!
+        ul.error
+            each error in errors
+                li=error.message
     h1 New Book
     form(action='/books/new', method='post')
         p

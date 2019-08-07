@@ -17,6 +17,11 @@ app.set('view engine', 'pug');
 //Set books routes
 app.use('/books', require('./routes/books'));
 
+//Set Home route
+app.get('/', (req, res) => {
+    res.redirect('/books');
+});
+
 //Set up a middleware function to handle 404 error
 app.use((req, res, next) => {
         if(!req.route){
@@ -25,14 +30,9 @@ app.use((req, res, next) => {
     });
 
 //Set up middleware functions for server errors
-app.use(function (err, req, res, next) {
+app.use((err, req, res, next) => {
     console.log('Error: ' + err.message);
     res.render('error');
-});
-
-//Set Home route
-app.get('/', (req, res) => {
-    res.redirect('/books');
 });
 
 const PORT = process.env.PORT || 5000;
