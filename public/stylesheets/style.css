@@ -1,12 +1,13 @@
 body {
   padding: 10px 50px 50px;
-  font: 18px "Garamond", serif;
+  font-family: 'Roboto Mono', monospace;
+  font: 18px;
   max-width: 800px;
   margin: auto;
 }
 
 a {
-  color: #019875;
+  color: #4ba6c3;
   text-decoration: none;
   font-weight: bold;
   transition: 0.4s;
@@ -18,8 +19,8 @@ a {
 
 a.button, input[type=submit] {
   color: white;
-  background: #019875;
-  font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: #4ba6c3;
+  font-family: 'Lexend Deca', sans-serif;
   padding: 10px 14px 12px;
   font-size: 14px;
   border-radius: 2px;
@@ -36,7 +37,7 @@ input[type=submit] {
 }
 
   a.button:hover, input[type=submit]:hover {
-    background-color: #01b189;
+    background-color: #6ebfda;
   }
 
 p {
@@ -82,7 +83,7 @@ label {
 
 input {
   padding: 10px;
-  font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: 'Lexend Deca', sans-serif;
   font-size: 14px;
   border-radius: 2px;
   border-color: #E7E7E7;

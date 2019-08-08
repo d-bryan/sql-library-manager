@@ -4,6 +4,7 @@ const Book = require('../models').Book;
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
+//Create sequelize instance
 const sequelize = new Sequelize({
     dialect: 'sqlite',
     storage: 'library.db'
@@ -20,6 +21,8 @@ router.get('/page=:pageId', (req, res) => {
     const perPage = 10;
     let booksLength = 0;
     
+    //create a function for pagination
+    //Skip the offset and fetch the limit after that
     const paginate = (pageNumber, perPage) => {
         const offset = (pageNumber * perPage) - perPage;
         const limit = perPage;
@@ -32,12 +35,12 @@ router.get('/page=:pageId', (req, res) => {
 
     Book.count()
         .then(c => {
+            //assign length of the list to a variable
             booksLength = c;
         })
         .then(()=> {
             Book.findAll(paginate(pageNumber, perPage))
                 .then(books => {
-                    console.log(books);
                     const totalPages = Math.ceil(booksLength / perPage);
                     res.render('index', { books, totalPages, pageNumber });
                 });
@@ -65,9 +68,11 @@ router.post('/new', (req, res) => {
 
 //GET search book
 router.get('/search', (req, res) => {
+    // assign search term in lower case
     const query = req.query.q.toLowerCase();
 
     Book.findAll({
+        //find search term in columns
         where: {
             [Op.or]: [
                 sequelize.where(
