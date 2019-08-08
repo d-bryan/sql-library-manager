@@ -4,7 +4,7 @@ block content
 
     h1 Books
 
-    div
+    div(class='search')
             form(method='action', action='/books/search')
                 label(for='q') Search:
                 input(type='text', name='q', id='q')
@@ -27,9 +27,18 @@ block content
                 tr
                     td
                         - var url = book.id;
-                        a(href='books/' + url)= book.title
+                        a(href='/books/' + url)= book.title
                     td= book.author
                     td= book.genre
                     td= book.year
             else
                 p There are no books
+        
+    - var n = 1;
+            ul(class='pagination')
+                while n <= totalPages
+                    li
+                        if(n == pageNumber)
+                            a(class='active', href='/books/page=' + n)= n++
+                        else
+                            a(href='/books/page=' + n)= n++

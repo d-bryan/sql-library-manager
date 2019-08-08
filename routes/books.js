@@ -11,8 +11,37 @@ const sequelize = new Sequelize({
 
 //GET book listing
 router.get('/', (req, res) => {
-    Book.findAll()
-        .then(books => res.render('index', { books }));
+    res.redirect('/books/page=1');
+});
+
+//Get paginate book listing
+router.get('/page=:pageId', (req, res) => {
+    const pageNumber = req.params.pageId;
+    const perPage = 10;
+    let booksLength = 0;
+    
+    const paginate = (pageNumber, perPage) => {
+        const offset = (pageNumber * perPage) - perPage;
+        const limit = perPage;
+
+        return {
+            offset,
+            limit
+        };
+    }
+
+    Book.count()
+        .then(c => {
+            booksLength = c;
+        })
+        .then(()=> {
+            Book.findAll(paginate(pageNumber, perPage))
+                .then(books => {
+                    console.log(books);
+                    const totalPages = Math.ceil(booksLength / perPage);
+                    res.render('index', { books, totalPages, pageNumber });
+                });
+        });
 });
 
 //GET new book form
