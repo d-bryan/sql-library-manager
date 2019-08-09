@@ -17,25 +17,8 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    genre: {
-      type: DataTypes.STRING,
-      validate: {
-        notEmpty: {
-          msg: "Genre is required!"
-        }
-      }
-    },
-    year: {
-      type: DataTypes.INTEGER,
-      validate: {
-        notEmpty: {
-          msg: "Year is required!"
-        },
-        isInt: {
-          msg: "Year should be a number!"
-        }
-      }
-    }
+    genre: DataTypes.STRING,
+    year: DataTypes.INTEGER
   }, {});
   Book.associate = function(models) {
     // associations can be defined here

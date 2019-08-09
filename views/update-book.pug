@@ -1,12 +1,14 @@
 extends layout.pug
 
 block content
+    h1 Update Book
+
     if errors
             h2.error Oooops!
             ul.error
                 each error in errors
                     li=error.message
-    h1 Update Book
+    
     - const id = book.id;
     - const title = book.title;
     - const author = book.author;
