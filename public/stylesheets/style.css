@@ -40,8 +40,19 @@ input[type=submit] {
     background-color: #6ebfda;
   }
 
-p {
+p{
   margin: 20px auto;
+}
+
+.top-nav {
+  height: 50px;
+}
+
+.btn-left {
+  float: left;
+}
+.btn-right {
+  float: right;
 }
 
 ul {
@@ -54,6 +65,11 @@ ul {
 h2 {
   border-top: 2px solid #e7e7e7;
   padding-top: 20px;
+}
+
+table {
+  width: 100%;
+  margin: 0 auto;
 }
 
 th {
@@ -99,17 +115,13 @@ input[type=text] {
   color: rgb(236, 15, 15);
 }
 
-table{
-  margin-left: auto;
-  margin-right: auto;
-}
-
 h1{
   text-align: center;
 }
 
 .search{
   text-align: right;
+  margin-bottom: 20px;
 }
 
 .search input[type=submit], 

@@ -10,8 +10,9 @@ block content
                 input(type='text', name='q', id='q')
                 input(type='submit' value='Go')
 
-    p
-        a.button(href='/books/new') Create New Book
+    div(class='top-nav')
+        a.button(href='/books/new', class='btn-left') Create New Book
+        a.button(href='/books/page=1', class='btn-right') Go Home
     
     table
         thead
