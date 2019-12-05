@@ -1,13 +1,14 @@
+/***********************************
+PROVIDED CSS
+***********************************/
+
 body {
   padding: 10px 50px 50px;
-  font-family: 'Roboto Mono', monospace;
-  font: 18px;
-  max-width: 800px;
-  margin: auto;
+  font: 18px "Garamond", serif;
 }
 
 a {
-  color: #4ba6c3;
+  color: #019875;
   text-decoration: none;
   font-weight: bold;
   transition: 0.4s;
@@ -19,8 +20,8 @@ a {
 
 a.button, input[type=submit] {
   color: white;
-  background: #4ba6c3;
-  font-family: 'Lexend Deca', sans-serif;
+  background: #019875;
+  font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
   padding: 10px 14px 12px;
   font-size: 14px;
   border-radius: 2px;
@@ -28,7 +29,7 @@ a.button, input[type=submit] {
 }
 
 form a.button, input[type=submit] {
-  margin-left: 140px;
+  margin-left: 14px;
   transition: 0.4s;
 }
 
@@ -36,23 +37,16 @@ input[type=submit] {
   border: 0;
 }
 
-  a.button:hover, input[type=submit]:hover {
-    background-color: #6ebfda;
-  }
+a.button:hover, input[type=submit]:hover {
+  background-color: #01b189;
+}
 
-p{
+a.button {
+  margin-left: 1em;
+}
+
+p {
   margin: 20px auto;
-}
-
-.top-nav {
-  height: 50px;
-}
-
-.btn-left {
-  float: left;
-}
-.btn-right {
-  float: right;
 }
 
 ul {
@@ -65,11 +59,6 @@ ul {
 h2 {
   border-top: 2px solid #e7e7e7;
   padding-top: 20px;
-}
-
-table {
-  width: 100%;
-  margin: 0 auto;
 }
 
 th {
@@ -99,7 +88,7 @@ label {
 
 input {
   padding: 10px;
-  font-family: 'Lexend Deca', sans-serif;
+  font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
   font-size: 14px;
   border-radius: 2px;
   border-color: #E7E7E7;
@@ -111,43 +100,45 @@ input[type=text] {
   width: 300px;
 }
 
+table {
+  margin-top: 40px;
+}
+
 .error {
   color: rgb(236, 15, 15);
 }
 
-h1{
-  text-align: center;
+
+/***********************************
+CUSTOM CSS
+***********************************/
+
+#q {
+  margin: 20px 10px;
 }
 
-.search{
-  text-align: right;
-  margin-bottom: 20px;
-}
-
-.search input[type=submit], 
-.search input[type=text] {
-  margin-left: 20px;
-  transition: 0.4s;
+table {
+  width: 100%;
 }
 
 .pagination{
+  margin: 60px 0 0 0;
   text-align: center;
 }
- 
-  .pagination li{
-    display: inline;
-  }
 
-    .pagination li a{
-      border: 1px solid #eaeaea;
-      border-radius: 5px;
-      padding: 3px 8px;
-      text-decoration: none;
-      color: #4ba6c3;
-    }
+.pagination li {
+  display: inline;
+}
 
-    .pagination li a.active,
-    .pagination li a:hover{
-      background-color: #4ba6c3;
-      color: #fff;
-    }
+.pagination li a{
+  border: 0;
+  background-color: #019875;
+  color: #fff;
+  font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  text-decoration: none;
+  margin: 3px;
+  
+}
